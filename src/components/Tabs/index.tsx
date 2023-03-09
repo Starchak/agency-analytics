@@ -12,20 +12,29 @@ type TabsProps = {
 const Tabs: React.FC<TabsProps> = ({ children }) => {
   const [activeTab, setActiveTab] = useState(0);
 
-  console.log('activeTab', activeTab);
-
   return (
     <div className={styles.tabs}>
-      {Children.map(children, (child: React.ReactElement, index) => {
-        if (child.type == TabsHeader) {
+      {Children.map(children, (child: React.ReactElement) => {
+        if (child.type === TabsHeader) {
           return cloneElement(child, {
             activeTab,
             setActiveTab,
           });
-        } else {
+        }
+
+        return null;
+      })}
+
+      {Children.map(
+        children.filter((child) => child.type !== TabsHeader),
+        (content: React.ReactElement, index) => {
+          if (index === activeTab) {
+            return content;
+          }
+
           return null;
         }
-      })}
+      )}
     </div>
   );
 };
