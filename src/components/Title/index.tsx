@@ -3,11 +3,17 @@ import React from 'react';
 import styles from './styles.module.css';
 
 type TitleProps = {
-  children: React.ReactNode;
+  children: string;
+  className?: string;
+  style?: React.CSSProperties;
 };
 
-const Title: React.FC<TitleProps> = ({ children }) => {
-  return <h2 className={styles.title}>{children}</h2>;
+const Title: React.FC<TitleProps> = ({ children, className, style }) => {
+  return (
+    <h2 className={`${styles.title} ${className}`} style={{ ...style }}>
+      {children}
+    </h2>
+  );
 };
 
 export default Title;
