@@ -1,0 +1,16 @@
+.tab {
+  padding: 2rem 0;
+  font-weight: 500;
+  /* Fixed width to match design as Favorite tabs on a screen 
+  take same amount of space as Recently Added */
+  width: 12rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.active {
+  color: #302edb;
+  border-bottom: 2px solid #302edb;
+}

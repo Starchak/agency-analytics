@@ -1,0 +1,5 @@
+.tabs_header {
+  display: flex;
+  width: 100%;
+  border-bottom: 1px solid #d7dee6;
+}
