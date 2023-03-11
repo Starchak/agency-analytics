@@ -13,7 +13,7 @@ const Gallery = () => {
       <Tabs>
         <TabsHeader>
           <Tab>Recently Added</Tab>
-          <Tab>Favorite</Tab>
+          <Tab>Favorited</Tab>
         </TabsHeader>
         <TabContent>Tab 1</TabContent>
         <TabContent>Tab 2</TabContent>
