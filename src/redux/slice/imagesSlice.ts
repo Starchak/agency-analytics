@@ -4,11 +4,13 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 export interface ImagesState {
   recentlyAdded: IImage[];
   favorited: IImage[];
+  selected: IImage | null;
 }
 
 const initialState: ImagesState = {
   recentlyAdded: [],
   favorited: [],
+  selected: null,
 };
 
 export const imagesSlice = createSlice({
@@ -16,7 +18,11 @@ export const imagesSlice = createSlice({
   initialState,
   reducers: {
     setRecentlyAdded: (state, action: PayloadAction<IImage[]>) => {
-      state.recentlyAdded = action.payload;
+      state.recentlyAdded = [...action.payload].sort((a, b) => {
+        return (
+          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        );
+      });
     },
     deleteRecentlyAdded: (state, action: PayloadAction<IImage>) => {
       state.recentlyAdded = state.recentlyAdded.filter(

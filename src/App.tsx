@@ -20,16 +20,8 @@ const App = () => {
   useEffect(() => {
     // If data is we got images from the server then we
     // sort them by createdAt date and dispatch them to the store
-    if (isSuccess) {
-      dispatch(
-        setRecentlyAdded(
-          [...data].sort((a, b) => {
-            return (
-              new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-            );
-          })
-        )
-      );
+    if (isSuccess && data) {
+      dispatch(setRecentlyAdded(data));
     }
   }, [isSuccess]);
 
