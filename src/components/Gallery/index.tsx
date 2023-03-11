@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 // Components
-import Title from '@components/Title';
+import { Title } from '@components/Typography';
 import { Tabs, TabsHeader, Tab, TabContent } from '@components/Tabs';
 import Grid from '@components/Gallery/Grid';
 

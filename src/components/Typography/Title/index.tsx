@@ -10,10 +10,10 @@ type TitleProps = {
 
 const Title: React.FC<TitleProps> = ({ children, className, style }) => {
   return (
-    <h2 className={`${styles.title} ${className}`} style={{ ...style }}>
+    <h3 className={`${styles.title} ${className}`} style={{ ...style }}>
       {children}
-    </h2>
+    </h3>
   );
 };
 
-export default Title;
+export { Title };
