@@ -5,30 +5,35 @@ import { useDispatch } from 'react-redux';
 import Details from '@components/Details';
 import Gallery from '@components/Gallery';
 
-// api
-import { useGetImagesQuery } from '@redux/api/imagesApi';
-
 // Reducers
 import { setRecentlyAdded } from '@redux/slice/imagesSlice';
+
+// Api
+import { useGetImagesQuery } from '@redux/api/imagesApi';
 
 import styles from '@styles/app.module.css';
 
 const App = () => {
   const dispatch = useDispatch();
-  const { data, error, isLoading, isSuccess } = useGetImagesQuery();
+  const { data: images, error, isLoading, isSuccess } = useGetImagesQuery();
 
   useEffect(() => {
-    // If data is we got images from the server then we
-    // sort them by createdAt date and dispatch them to the store
-    if (isSuccess && data) {
-      dispatch(setRecentlyAdded(data));
+    // Save images to redux store if successful fetch
+    if (isSuccess && images) {
+      dispatch(setRecentlyAdded(images));
     }
   }, [isSuccess]);
 
   return (
     <div className={styles.app}>
-      <Gallery />
-      <Details />
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : (
+        <>
+          <Gallery />
+          <Details />
+        </>
+      )}
     </div>
   );
 };

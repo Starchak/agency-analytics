@@ -37,6 +37,9 @@ export const imagesSlice = createSlice({
         (image) => image.id !== action.payload.id
       );
     },
+    setSelected: (state, action: PayloadAction<IImage>) => {
+      state.selected = action.payload;
+    },
   },
 });
 
@@ -46,6 +49,7 @@ export const {
   deleteRecentlyAdded,
   addFavorited,
   deleteFavorited,
+  setSelected,
 } = imagesSlice.actions;
 
 export default imagesSlice.reducer;
