@@ -20,6 +20,10 @@ import { formatDate } from '@utils/format';
 // Types
 import type { RootState } from '@redux/store';
 
+import { ReactComponent as EmptyDataIcon } from '@img/empty_data_icon.svg';
+import { ReactComponent as FavoriteIcon } from '@img/favorite_icon.svg';
+import { ReactComponent as FavoriteFilledIcon } from '@img/favorite_icon_filled.svg';
+
 import styles from './styles.module.css';
 
 const Details: React.FC = () => {
@@ -32,7 +36,16 @@ const Details: React.FC = () => {
   const [deleteModal, setDeleteModal] = useState(false);
 
   // Add/Remove image from favorite
-  const handleFavorite = () => {};
+  const handleFavorite = () => {
+    if (selectedImage) {
+      dispatch(
+        updateImage({ ...selectedImage, favorited: !selectedImage.favorited })
+      );
+      dispatch(
+        setSelected({ ...selectedImage, favorited: !selectedImage.favorited })
+      );
+    }
+  };
 
   // Delete image, Remove Selected Image and close modal
   const handleDelete = () => {
@@ -52,7 +65,17 @@ const Details: React.FC = () => {
           />
           <div className={styles.like_container}>
             <SmallTitle>{selectedImage.filename}</SmallTitle>
-            <div onClick={handleFavorite}>Like</div>
+            {selectedImage.favorited ? (
+              <FavoriteFilledIcon
+                className={styles.favorite_icon}
+                onClick={handleFavorite}
+              />
+            ) : (
+              <FavoriteIcon
+                className={styles.favorite_icon}
+                onClick={handleFavorite}
+              />
+            )}
           </div>
           <Subtitle>{`${bytesToMB(selectedImage.sizeInBytes)} MB`}</Subtitle>
           <div className={styles.row}>
@@ -118,7 +141,10 @@ const Details: React.FC = () => {
           </Modal>
         </>
       ) : (
-        'No img selected'
+        <div className={styles.no_img_selected}>
+          <EmptyDataIcon />
+          <p className={styles.no_img_text}>Nothing to see here</p>
+        </div>
       )}
     </div>
   );

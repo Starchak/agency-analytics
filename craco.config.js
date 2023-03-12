@@ -10,6 +10,7 @@ module.exports = {
       '@styles': path.resolve(__dirname, 'src/styles'),
       '@redux': path.resolve(__dirname, 'src/redux'),
       '@utils': path.resolve(__dirname, 'src/utils'),
+      '@img': path.resolve(__dirname, 'src/img'),
     },
   },
 };

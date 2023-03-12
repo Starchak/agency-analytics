@@ -29,8 +29,6 @@ const GridItem: React.FC<GridItemProps> = ({ image }) => {
     dispatch(setSelected(image));
   };
 
-  console.log(selectedId);
-
   return (
     <div className={styles.grid_item} onClick={selectItem}>
       <div

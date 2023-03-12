@@ -21,7 +21,8 @@
       "@components/*": ["components/*"],
       "@styles/*": ["styles/*"],
       "@redux/*": ["redux/*"],
-      "@utils/*": ["utils/*"]
+      "@utils/*": ["utils/*"],
+      "@img/*": ["img/*"]
     }
   },
   "include": ["src", "index.d.ts"]
