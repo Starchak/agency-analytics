@@ -1,0 +1,68 @@
+.loading {
+  padding-top: 4rem;
+
+  /* Fallback if Grid is not supported */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  /* Grid */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(24.5rem, 0));
+}
+
+@media (max-width: 1290px) {
+  .loading {
+    grid-template-columns: repeat(auto-fill, minmax(48%, 0));
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 24rem;
+  justify-content: space-between;
+  margin-bottom: 4rem;
+  cursor: pointer;
+}
+
+.image {
+  width: 100%;
+  height: 18rem;
+  border-radius: 2rem;
+}
+
+.title {
+  width: 100%;
+  height: 2rem;
+  border-radius: 0.5rem;
+}
+
+.size {
+  width: 40%;
+  height: 2rem;
+  border-radius: 0.5rem;
+}
+
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: -800px 0;
+  }
+  100% {
+    background-position: 800px 0;
+  }
+}
+
+.animated {
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background-color: #dcdfe6;
+  background: linear-gradient(to right, #eeeeee 8%, #bbbbbb 18%, #eeeeee 33%);
+  background-size: 800px 104px;
+  position: relative;
+}

@@ -5,13 +5,18 @@ import { useSelector } from 'react-redux';
 import { Title } from '@components/Typography';
 import { Tabs, TabsHeader, Tab, TabContent } from '@components/Tabs';
 import Grid from '@components/Gallery/Grid';
+import Loading from '@components/Gallery/Loading';
 
 // Types
 import type { RootState } from '@redux/store';
 
 import styles from './styles.module.css';
 
-const Gallery = () => {
+type GalleryProps = {
+  isLoading: boolean;
+};
+
+const Gallery: React.FC<GalleryProps> = ({ isLoading }) => {
   const images = useSelector((state: RootState) => state.images.images);
 
   return (
@@ -23,10 +28,10 @@ const Gallery = () => {
           <Tab>Favorited</Tab>
         </TabsHeader>
         <TabContent>
-          <Grid images={images} />
+          {isLoading ? <Loading /> : <Grid images={images} />}
         </TabContent>
         <TabContent>
-          <Grid images={images.filter((image) => image.favorited)} />
+          {isLoading ? <Loading /> : <Grid images={images} />}
         </TabContent>
       </Tabs>
     </div>

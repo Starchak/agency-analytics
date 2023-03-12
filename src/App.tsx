@@ -26,14 +26,10 @@ const App = () => {
 
   return (
     <div className={styles.app}>
-      {isLoading ? (
-        <div>Loading...</div>
-      ) : (
-        <>
-          <Gallery />
-          <Details />
-        </>
-      )}
+      <>
+        <Gallery isLoading={isLoading} />
+        <Details />
+      </>
     </div>
   );
 };
