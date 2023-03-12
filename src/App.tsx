@@ -6,7 +6,7 @@ import Details from '@components/Details';
 import Gallery from '@components/Gallery';
 
 // Reducers
-import { setRecentlyAdded } from '@redux/slice/imagesSlice';
+import { setImages } from '@redux/slice/imagesSlice';
 
 // Api
 import { useGetImagesQuery } from '@redux/api/imagesApi';
@@ -20,7 +20,7 @@ const App = () => {
   useEffect(() => {
     // Save images to redux store if successful fetch
     if (isSuccess && images) {
-      dispatch(setRecentlyAdded(images));
+      dispatch(setImages(images));
     }
   }, [isSuccess]);
 

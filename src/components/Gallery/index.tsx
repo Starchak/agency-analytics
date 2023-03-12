@@ -12,12 +12,7 @@ import type { RootState } from '@redux/store';
 import styles from './styles.module.css';
 
 const Gallery = () => {
-  const recentlyAddedImg = useSelector(
-    (state: RootState) => state.images.recentlyAdded
-  );
-  const favoritedImg = useSelector(
-    (state: RootState) => state.images.favorited
-  );
+  const images = useSelector((state: RootState) => state.images.images);
 
   return (
     <div className={styles.gallery}>
@@ -28,10 +23,10 @@ const Gallery = () => {
           <Tab>Favorited</Tab>
         </TabsHeader>
         <TabContent>
-          <Grid images={recentlyAddedImg} />
+          <Grid images={images} />
         </TabContent>
         <TabContent>
-          <Grid images={favoritedImg} />
+          <Grid images={images.filter((image) => image.favorited)} />
         </TabContent>
       </Tabs>
     </div>

@@ -1,0 +1,40 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  padding: 1rem 2rem;
+  font-size: 2rem;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+
+.submit {
+  background: #302edb;
+  color: #fff;
+}
+
+.submit:hover {
+  background: #4f46e5;
+}
+
+.submit:active {
+  background: #1e1f9b;
+}
+
+.delete {
+  background: #fff;
+  color: #324153;
+  border: 1px solid #cbd5e1;
+}
+
+.delete:hover {
+  background: #f7f8fc;
+}
+
+.delete:active {
+  background: #e2e8f0;
+}

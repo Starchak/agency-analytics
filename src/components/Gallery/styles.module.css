@@ -4,4 +4,6 @@
   flex-direction: column;
   background: #f7f8fc;
   padding: 4rem;
+  padding-bottom: 0;
+  border-right: 1px solid #d7dee6;
 }

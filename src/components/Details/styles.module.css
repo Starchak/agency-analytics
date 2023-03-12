@@ -1,12 +1,12 @@
 .details {
-  max-height: 100vh;
+  max-height: calc(100vh - 4rem);
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 4rem;
+  padding: 0 4rem;
   position: -webkit-sticky;
   position: sticky;
-  top: 0;
+  top: 4rem;
 }
 
 .image {
@@ -21,4 +21,42 @@
   align-items: center;
   justify-content: space-between;
   margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.information {
+  margin-top: 2rem;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 0;
+  border-bottom: 1px solid #d7dee6;
+}
+
+.description {
+  margin-top: 2rem;
+}
+
+.delete_btn {
+  margin-top: 2rem;
+}
+
+.delete_modal_buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.bolder_subtitle {
+  font-weight: 600;
+}
+
+.description_text {
+  margin-top: 1rem;
+  font-weight: 600;
+  line-height: 2.2rem;
 }

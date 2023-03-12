@@ -2,14 +2,12 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 export interface ImagesState {
-  recentlyAdded: IImage[];
-  favorited: IImage[];
+  images: IImage[];
   selected: IImage | null;
 }
 
 const initialState: ImagesState = {
-  recentlyAdded: [],
-  favorited: [],
+  images: [],
   selected: null,
 };
 
@@ -17,39 +15,35 @@ export const imagesSlice = createSlice({
   name: 'images',
   initialState,
   reducers: {
-    setRecentlyAdded: (state, action: PayloadAction<IImage[]>) => {
-      state.recentlyAdded = [...action.payload].sort((a, b) => {
+    setImages: (state, action: PayloadAction<IImage[]>) => {
+      state.images = [...action.payload].sort((a, b) => {
         return (
           new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
         );
       });
     },
-    deleteRecentlyAdded: (state, action: PayloadAction<IImage>) => {
-      state.recentlyAdded = state.recentlyAdded.filter(
-        (image) => image.id !== action.payload.id
+    updateImage: (state, action: PayloadAction<IImage>) => {
+      state.images = state.images.map((image) => {
+        if (image.id === action.payload.id) {
+          return action.payload;
+        } else {
+          return image;
+        }
+      });
+    },
+    deleteImage: (state, action: PayloadAction<string>) => {
+      state.images = state.images.filter(
+        (image) => image.id !== action.payload
       );
     },
-    addFavorited: (state, action: PayloadAction<IImage>) => {
-      state.favorited.push(action.payload);
-    },
-    deleteFavorited: (state, action: PayloadAction<IImage>) => {
-      state.favorited = state.favorited.filter(
-        (image) => image.id !== action.payload.id
-      );
-    },
-    setSelected: (state, action: PayloadAction<IImage>) => {
+    setSelected: (state, action: PayloadAction<IImage | null>) => {
       state.selected = action.payload;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const {
-  setRecentlyAdded,
-  deleteRecentlyAdded,
-  addFavorited,
-  deleteFavorited,
-  setSelected,
-} = imagesSlice.actions;
+export const { setImages, deleteImage, updateImage, setSelected } =
+  imagesSlice.actions;
 
 export default imagesSlice.reducer;
