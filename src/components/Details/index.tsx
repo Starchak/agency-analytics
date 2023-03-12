@@ -79,7 +79,9 @@ const Details: React.FC = () => {
             className={styles.image}
           />
           <div className={styles.like_container}>
-            <SmallTitle>{selectedImage.filename}</SmallTitle>
+            <SmallTitle className={styles.filename}>
+              {selectedImage.filename}
+            </SmallTitle>
             {selectedImage.favorited ? (
               <FavoriteFilledIcon
                 className={styles.favorite_icon}

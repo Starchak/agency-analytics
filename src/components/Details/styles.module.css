@@ -18,6 +18,13 @@
   border-radius: 1rem;
 }
 
+.filename {
+  white-space: nowrap;
+  width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .like_container {
   display: flex;
   align-items: center;

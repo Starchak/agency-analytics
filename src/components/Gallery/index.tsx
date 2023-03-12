@@ -31,7 +31,11 @@ const Gallery: React.FC<GalleryProps> = ({ isLoading }) => {
           {isLoading ? <Loading /> : <Grid images={images} />}
         </TabContent>
         <TabContent>
-          {isLoading ? <Loading /> : <Grid images={images} />}
+          {isLoading ? (
+            <Loading />
+          ) : (
+            <Grid images={images.filter((image) => image.favorited)} />
+          )}
         </TabContent>
       </Tabs>
     </div>

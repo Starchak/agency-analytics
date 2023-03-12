@@ -7,34 +7,45 @@ import styles from './styles.module.css';
 
 type TabsProps = {
   children: React.ReactElement[];
+  className?: string;
+  style?: React.CSSProperties;
+  defaultTab?: number;
 };
 
-const Tabs: React.FC<TabsProps> = ({ children }) => {
-  const [activeTab, setActiveTab] = useState(0);
+const Tabs: React.FC<TabsProps> = ({
+  children,
+  className,
+  style,
+  defaultTab,
+}) => {
+  const [activeTab, setActiveTab] = useState(defaultTab || 0);
+  let _header: React.ReactElement | null = null,
+    _content: React.ReactElement[] = [];
+
+  Children.map(children, (child: React.ReactElement) => {
+    if (child.type === TabsHeader) {
+      _header = child;
+    } else if (child.type === TabContent) {
+      _content.push(child);
+    }
+  });
 
   return (
-    <div className={styles.tabs}>
-      {Children.map(children, (child: React.ReactElement) => {
-        if (child.type === TabsHeader) {
-          return cloneElement(child, {
-            activeTab,
-            setActiveTab,
-          });
-        }
+    <div
+      className={`${styles.tabs} ${className ? className : ''}`}
+      style={{ ...style }}
+    >
+      {_header &&
+        cloneElement(_header, {
+          activeTab,
+          setActiveTab,
+        })}
 
-        return null;
+      {_content.map((content, index) => {
+        if (index === activeTab) {
+          return content;
+        }
       })}
-
-      {Children.map(
-        children.filter((child) => child.type !== TabsHeader),
-        (content: React.ReactElement, index) => {
-          if (index === activeTab) {
-            return content;
-          }
-
-          return null;
-        }
-      )}
     </div>
   );
 };
