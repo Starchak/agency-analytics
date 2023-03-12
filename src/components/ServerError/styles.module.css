@@ -1,0 +1,17 @@
+.server_error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+}
+
+.server_error iframe {
+  border: none;
+}
+
+.server_error p {
+  font-size: 2rem;
+}

@@ -2,7 +2,7 @@ import React from 'react';
 
 import styles from './styles.module.css';
 
-const Loading = () => {
+const Loading: React.FC = () => {
   return (
     <div className={styles.loading}>
       {[...Array(12)].map((_, i) => (
