@@ -1,7 +1,19 @@
 .grid {
+  padding-top: 4rem;
+
+  /* Fallback if Grid is not supported */
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-between;
-  padding-top: 4rem;
+
+  /* Grid */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(24.5rem, 0));
+}
+
+@media (max-width: 1290px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(48%, 0));
+  }
 }

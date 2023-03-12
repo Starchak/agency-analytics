@@ -1,7 +1,7 @@
 .grid_item {
   display: flex;
   flex-direction: column;
-  width: 24.5rem;
+  width: 100%;
   height: 24rem;
   justify-content: space-between;
   margin-bottom: 4rem;
@@ -37,4 +37,10 @@
   width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+@media (max-width: 1290px) {
+  .grid_item {
+    margin-bottom: 2rem;
+  }
 }

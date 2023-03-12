@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 // Components
@@ -23,6 +23,7 @@ import type { RootState } from '@redux/store';
 import { ReactComponent as EmptyDataIcon } from '@img/empty_data_icon.svg';
 import { ReactComponent as FavoriteIcon } from '@img/favorite_icon.svg';
 import { ReactComponent as FavoriteFilledIcon } from '@img/favorite_icon_filled.svg';
+import { ReactComponent as CloseIcon } from '@img/close_icon.svg';
 
 import styles from './styles.module.css';
 
@@ -50,12 +51,26 @@ const Details: React.FC = () => {
   // Delete image, Remove Selected Image and close modal
   const handleDelete = () => {
     setDeleteModal(false);
-    dispatch(deleteImage(selectedImage ? selectedImage.id : ''));
+    if (selectedImage) {
+      dispatch(deleteImage(selectedImage.id));
+      dispatch(setSelected(null));
+    }
+  };
+
+  // CloseBtn click handler
+  const handleClose = () => {
     dispatch(setSelected(null));
   };
 
   return (
-    <div className={styles.details}>
+    <div
+      className={`${styles.details} ${
+        selectedImage ? styles.details_open : ''
+      }`}
+    >
+      <div className={styles.close_btn_wrap}>
+        <CloseIcon className={styles.close_btn} onClick={handleClose} />
+      </div>
       {selectedImage ? (
         <>
           <img
