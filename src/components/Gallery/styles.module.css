@@ -7,3 +7,9 @@
   padding-bottom: 0;
   border-right: 1px solid #d7dee6;
 }
+
+@media (max-width: 1020px) {
+  .gallery {
+    padding: 2rem;
+  }
+}

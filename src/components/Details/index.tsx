@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 // Components
@@ -33,6 +33,8 @@ const Details: React.FC = () => {
     (state: RootState) => state.images.selected
   );
 
+  const detailsRef = useRef<HTMLDivElement>(null);
+
   // State to handle modal open/close
   const [deleteModal, setDeleteModal] = useState(false);
 
@@ -62,11 +64,25 @@ const Details: React.FC = () => {
     dispatch(setSelected(null));
   };
 
+  const windowWidth = useRef(window.innerWidth);
+
+  console.log(windowWidth);
+
+  // Check if details is open and block body scroll
+  useEffect(() => {
+    if (selectedImage && windowWidth.current <= 1020) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [selectedImage]);
+
   return (
     <div
       className={`${styles.details} ${
         selectedImage ? styles.details_open : ''
       }`}
+      ref={detailsRef}
     >
       <div className={styles.close_btn_wrap}>
         <CloseIcon className={styles.close_btn} onClick={handleClose} />

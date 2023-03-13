@@ -109,7 +109,7 @@
 @media (max-width: 1020px) {
   .details {
     width: calc(100% - 4rem);
-    height: calc(100% - 4rem);
+    height: 100vh;
     max-height: 100vh;
     padding: 2rem;
     position: fixed;
@@ -125,5 +125,9 @@
 
   .close_btn_wrap {
     display: flex;
+  }
+
+  .delete_btn {
+    margin-bottom: 8rem;
   }
 }
